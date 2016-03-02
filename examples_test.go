@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/alexcesaro/statsd"
+	"github.com/philk/statsd"
 )
 
 func Example() {

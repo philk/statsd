@@ -165,17 +165,6 @@ func New(addr string, options ...Option) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	// When using UDP do a quick check to see if something is listening on the
-	// given port to return an error as soon as possible.
-	if c.network[:3] == "udp" {
-		for i := 0; i < 2; i++ {
-			_, err = c.conn.Write(nil)
-			if err != nil {
-				_ = c.conn.Close()
-				return nil, err
-			}
-		}
-	}
 
 	if c.flushPeriod == 0 {
 		c.flushPeriod = 100 * time.Millisecond
